@@ -7,7 +7,7 @@ import logging
 import logging.config
 
 
-class MyLogger:
+class MyLogger():
     def __init__(self, conf="../config/logger.conf"):
         logging.config.fileConfig(conf)
         self.logger = logging.getLogger("test")
