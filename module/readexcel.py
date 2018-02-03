@@ -1,7 +1,8 @@
 import xlrd
+from log import MyLogger
 
 
-class ExcelToDict(object):
+class ReadExcel():
     
     def __init__(self, excel_path, sheet_name):
         """
@@ -21,15 +22,15 @@ class ExcelToDict(object):
     def next(self):
         r = []
         while self.has_next():
-            """
+            '''
             循环获取excel数据，每次读取一行，
             每一行的数据作为一个字典，字典的键是每一列的标题。
-            """
+            '''
             s = {}
             col = self.table.row_values(self.curRowNo)
             i = self.colNum
             for x in range(i):
-                s[self.row[x]] = col[x]
+                    s[self.row[x]] = col[x]
             r.append(s)
             self.curRowNo += 1
         return r
@@ -43,6 +44,5 @@ class ExcelToDict(object):
         else:
             return True
 
-
 if __name__ == '__main__':
-    ExcelToDict("../data/test.xlsx", "Sheet1").next()
+   ReadExcel("../data/data.xlsx", "ImageInfo").next()
